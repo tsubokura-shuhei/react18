@@ -1,3 +1,11 @@
+【実行環境コマンド】
+yarn start
+
+【環境設定】
+node version v16.3.0
+yarn version v1.22.19
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
