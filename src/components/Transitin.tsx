@@ -1,4 +1,4 @@
-import { useState, startTransition } from "react";
+import { useState, useTransition } from "react";
 import { Avatar } from "./Avatar";
 
 type Task = {
@@ -15,7 +15,7 @@ const member = {
 
 const generateDummyTasks = ():Task[] => {
   return Array(10000).fill("").map((_, index) => {
-    const addedIndex = index + 1;
+    const addedIndex:any = index + 1;
     return{
       id:addedIndex,
       title: `タスク${addedIndex}`,
@@ -32,6 +32,7 @@ const filteringAssignee = (assignee:string) => {
 }
 
 export const Transitin = () => {
+  const [isPending,startTransition] = useTransition();
   const [selectedAssignee,setSelectedAssignee] = useState<string>("")
   const [taskList,setTaskList] = useState<Task[]>(tasks)
 
@@ -54,7 +55,7 @@ export const Transitin = () => {
       <br />
       <button onClick={() => onClickAssignee("")}>リセット</button>
       {taskList.map((task) => (
-        <div key={task.id} style={{width:"300px", margin:"auto", background:"lavender"}}>
+        <div key={task.id} style={{width:"300px", margin:"auto", background:"lavender", opacity:isPending ? 0.5 : 1}}>
           <p>タイトル:{task.title}</p>
           <p>担当:{task.assignee}</p>
         </div>
